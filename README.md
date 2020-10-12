@@ -3,7 +3,7 @@
 
 by: Arya Pambudi Bayuaji
 
-Dataset: lending_club_loan_two.csv [gdrive](https://drive.google.com/file/d/10cSCOrt7y2XY05J7AeX5FmIbLa3wLtQV/view?usp=sharing)
+Dataset: lending_club_loan_two.csv [gdrive](https://drive.google.com/file/d/1k0HmRq5JCOgU2ctKphxypd9UGNMwIFfS/view?usp=sharing)
 
 *The dataset is separate from the repository because it exceeds github file size limit.
 
