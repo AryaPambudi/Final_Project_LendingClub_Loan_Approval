@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Project</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/a.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <style>
+      .scroll{
+        height: 500px;
+        overflow: scroll;
+      }
+      .sticky th {
+        position: sticky;
+        top: 0;
+        background-color: silver;
+        border-collapse: collapse;
+      }
+      .table-bordered th{
+        border-top-style: hidden ;
+      }
+      
+      
+    </style>
+  </head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/predict">Loan Approval Prediction</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Data Visualization
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="{{ url_for('cat_fn') }}">Histogram & Box plot</a>
+                <a class="dropdown-item" href="{{ url_for('scatt_fn') }}">Scatter Plot</a>
+                <a class="dropdown-item" href="{{ url_for('pie_fn') }}">Pie</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href=/inputdata>Input Data</a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav ml-auto">
+            <form class="form-inline" action="http://localhost:4000">
+              <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
+              <button class="btn btn-light" type="submit" >Log Out</button>
+            </form>
+          </ul>
+        </div>
+  </nav>
+    <br>
+  <center>
+    <a class="nav-link active" href="/home"><img src="http://localhost:4000/static/LendingClub_Logo1.png" width="50%"><span class="sr-only">(current)</span></a>
+  </center>
+  <br>
+  <br>
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class='text-center display-4 my-3'><b>About the Project!</b></h1>
+      <br>
+      <br>
+      <p class='mx-6'>
+        LendingClub is an American peer-to-peer lending company, headquartered in San Francisco, California. It was the first peer-to-peer lender to register its offerings as securities with the Securities and Exchange Commission (SEC), and to offer loan trading on a secondary market. LendingClub is the world's largest peer-to-peer lending platform. The company claims that $15.98 billion in loans had been originated through its platform up to December 31, 2015.
+        <br><br>
+        LendingClub enables borrowers to create unsecured personal loans between $1,000 and $40,000. The standard loan period is three years. Investors can search and browse the loan listings on LendingClub website and select loans that they want to invest in based on the information supplied about the borrower, amount of loan, loan grade, and loan purpose. Investors make money from interest. LendingClub makes money by charging borrowers an origination fee and investors a service fee.
+      </p>
+      <p class='mx-6'>
+        Related to this, In this final project I will build a Flask-based web app that can recommend whether the personal loan is approved or not based on the given term and loan condition. We use Gradient Boost Classifier algorithm to do approval for LendingClub loan request. The algorithm was chosen after going through various analyses on datasets and after making some comparison with other machine learning models.
+      </p>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="container">
+    <div class="row justify-content-center">
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Arya Pambudi Bayuaji 2020</span>
+          </div>
+        </div>
+      </footer>     
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  
+</body>
+</html>

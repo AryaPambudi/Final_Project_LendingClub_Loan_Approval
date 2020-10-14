@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction</title>
+    
+    <!-- Boosstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+
+    
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+      
+        <!-- <a class="navbar-brand" href="#">SBA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button> -->
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/predict">Loan Approval Prediction</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Data Visualization
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="{{ url_for('cat_fn') }}">Histogram & Box plot</a>
+                <a class="dropdown-item" href="{{ url_for('scatt_fn') }}">Scatter Plot</a>
+                <a class="dropdown-item" href="{{ url_for('pie_fn') }}">Pie</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href=/inputdata>Input Data</a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav ml-auto">
+            <form class="form-inline" action="http://localhost:4000">
+              <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
+              <button class="btn btn-light" type="submit" >Log Out</button>
+            </form>
+          </ul>
+        </div>
+    </nav>
+    <!-- End of Navbar -->
+
+    <br>
+    <center>
+      <a class="nav-link active" href="/home"><img src="http://localhost:4000/static/LendingClub_Logo1.png" width="50%"><span class="sr-only">(current)</span></a>
+    </center>
+    <br>   
+    <br>
+
+    <!-- Content -->
+    <div class="container">
+      <div class="row justify-content-center">
+        
+        <br>
+        <br>
+
+        <center>
+          <h1> Loan Approval Analysis </h1>
+          <br>
+          <br>
+          <br>
+          <br>
+          
+      </center> 
+    </div>
+    </div>
+    
+    
+    <div class="container center-block">
+    <form method="POST" action="http://localhost:4000/LendingClub_Loan_Result">
+      <div class="row">
+        <div class="col order-md-1">
+          <form class="needs-validation" novalidate>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="Loan_Amount">Loan Amount</label>
+                <input type="number" step= "1" class="form-control" name="Loan_Amount" placeholder="Loan Amount Approved" required=True>
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="Annual_Income">Annual Income</label>
+                <input type="number" step= "1" class="form-control" name="Annual_Income" placeholder="Borrower's Annual Income" required=True>
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-5 mb-3">
+                <label for="Term">Term</label>
+                <select name="Term" class="form-control">
+                  <option value="0">36 Months</option>
+                  <option value="1">60 Months</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a valid country.
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="Revolving_Balance">Revolving Balance</label>
+                <input type="number" step= "1" class="form-control" name="Revolving_Balance" placeholder="Borrower's Revolving Balance" required=True>
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="Interest_Rate">Interest Rate</label>
+                <input type="number" step= "0.01" class="form-control" name="Interest_Rate" placeholder="Interest of Amount" required=True>
+                <div class="invalid-feedback">
+                  Zip code required.
+                </div>
+              </div>
+            </div>
+          </form>
+          <br><br>
+          <center>
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to Predict</button></center>
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
+  <br><br><br><br><br><br>
+  
+  
+  <div class="row justify-content-center">
+    <footer class="sticky-footer bg-white">
+      <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+          <span>Copyright &copy; Arya Pambudi Bayuaji 2020</span>
+        </div>
+      </div>
+    </footer>
+  
+    <br><br><br><br><br>
+
+</body>
+</html>
