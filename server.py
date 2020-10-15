@@ -326,7 +326,7 @@ def LendingClub_Loan_predict():
 
     pred_proba = gbc_smo.predict_proba([[loan_amnt, term, int_rate, annual_inc, revol_bal]])
 
-    if pred_proba[0][1] < 0.703496022411385 :
+    if pred_proba[0][1] < 0.7116565025507577 :
         pred = 0
         prob = pred_proba[0][0]
     else :
